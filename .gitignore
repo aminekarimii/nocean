@@ -13,3 +13,71 @@ iosApp/iosApp.xcworkspace/*
 iosApp/iosApp.xcodeproj/*
 !iosApp/iosApp.xcodeproj/project.pbxproj
 shared/shared.podspec
+
+# General
+.gradle/
+local.properties
+settings.gradle.kts
+gradle.properties
+
+# Gradle
+/.gradle
+/captures/
+# Mac
+
+# IntelliJ IDEA
+.idea/
+
+# Android
+/build/
+
+# iOS
+/.xcodeproj/
+/*.xcworkspace/
+/Pods/
+/.xccheckout
+/.swiftpm/
+
+# Eclipse
+/.eclipse/
+/bin/
+/tmp/
+/.metadata/
+*.tmp
+*.bak
+*.swp
+*~.nib
+.settings/
+.loadpath
+
+# VSCode
+.vscode/
+.project
+.classpath
+
+# Logs
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
+*.sqlite
+*.sqlitedb
+*.zip
+*.tar.gz
+*.rar
+*.gz
+*.bz2
+*.taz
+*.xz
+*.exe
+*.dll
+*.img
+*.iso
+*.bin
+*.dmg
+*.m4a
+*.mp3
+
