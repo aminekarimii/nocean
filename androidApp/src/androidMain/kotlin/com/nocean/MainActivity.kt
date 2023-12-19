@@ -1,4 +1,4 @@
-package com.myapplication
+package com.nocean
 
 import MainView
 import android.os.Bundle
