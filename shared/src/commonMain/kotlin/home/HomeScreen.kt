@@ -28,9 +28,16 @@ import dev.icerock.moko.mvvm.compose.viewModelFactory
 @Composable
 fun HomeRoute() {
     val viewModel: HomeViewModel = getViewModel(Unit, viewModelFactory { HomeViewModel() })
-    val categories = viewModel.categories.collectAsState().value
+    val categories =
+        viewModel.cats.collectAsState().value?.pageProps?.featuredTemplateCategoriesResponse?.map {
+            Category(
+                id = it.title,
+                name = it.title,
+                icon = it.notionIcon
+            )
+        }?.toMutableList()
 
-    HomeScreen(categories = categories)
+    HomeScreen(categories = categories ?: mutableListOf())
 }
 
 @Composable
@@ -53,7 +60,7 @@ fun CategoryHeader(categories: MutableList<Category>) {
     LazyRow {
         items(categories, key = { it.id }) { category ->
             Card(
-                modifier = Modifier.padding(horizontal = 8.dp).clickable {  },
+                modifier = Modifier.padding(horizontal = 8.dp).clickable { },
                 shape = MaterialTheme.shapes.medium,
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary)
             ) {

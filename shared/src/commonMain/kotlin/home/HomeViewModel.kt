@@ -1,9 +1,21 @@
 package home
 
+import data.NoceanNetworkDataSourceImpl
+import data.model.Feed
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.stateIn
 
 class HomeViewModel : ViewModel() {
+    val cats = this.getCats().stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000L),
+        initialValue = null
+    )
+
     val categories = MutableStateFlow(
         mutableListOf(
             Category("1", "Productivity", "Notion Templates"),
@@ -21,4 +33,9 @@ class HomeViewModel : ViewModel() {
         )
     )
 
+    fun getCats(): Flow<Feed> {
+        return flow {
+            NoceanNetworkDataSourceImpl().getFeed()
+        }
+    }
 }
